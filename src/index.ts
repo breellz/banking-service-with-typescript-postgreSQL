@@ -1,5 +1,6 @@
 import { createConnection } from "typeorm"
 import { Client } from "./entities/Client"
+import { Banker } from "./entities/Banker"
 
 require('dotenv').config()
 
@@ -13,7 +14,7 @@ const main = async () => {
             username: 'postgres',
             password: process.env.DB_PASSWORD,
             database: 'Banking',
-            entities: [Client],
+            entities: [Client, Banker],
             synchronize: true,
         })
         console.log('Database connected')
