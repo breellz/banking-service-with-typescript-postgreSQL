@@ -5,11 +5,16 @@ const router = express.Router()
 
 
 router.delete('/api/client/:clientId', async (req, res) => {
-    const { clientId } = req.params
+    try {
+        const { clientId } = req.params
 
-    const response = await Client.delete({ id: parseInt(clientId) })
+        const response = await Client.delete({ id: parseInt(clientId) })
 
-    res.json(response)
+        res.json(response)
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+
 })
 
 export { router as deleteClientRouter }
